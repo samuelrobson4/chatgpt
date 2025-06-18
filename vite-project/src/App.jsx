@@ -10,18 +10,30 @@ export default function App() {
   const [selected, setSelected] = useState(null)
 
   useEffect(() => {
-    fetch(SHEET_URL)
-      .then(res => res.json())
-      .then(setItems)
-  }, [])
+  fetch(SHEET_URL)
+    .then(res => {
+      console.log("Fetched response:", res)
+      return res.json()
+    })
+    .then(data => {
+      console.log("Fetched items:", data)
+      setItems(data)
+    })
+    .catch(err => {
+      console.error("Failed to fetch playlists:", err)
+    })
+}, [])
 
-  return (
-    <div className="app">
-      {!selected ? (
-        <PlaylistSelector items={items} onSelect={setSelected} />
+return (
+  <div className="app">
+    {!selected ? (
+      items.length === 0 ? (
+        <p>Loading playlists…</p>
       ) : (
-        <TrackList item={selected} onBack={() => setSelected(null)} />
-      )}
-    </div>
-  )
-}
+        <PlaylistSelector items={items} onSelect={setSelected} />
+      )
+    ) : (
+      <TrackList item={selected} onBack={() => setSelected(null)} />
+    )}
+  </div>
+)
