@@ -1,0 +1,17 @@
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f0f0f0;
+  text-align: center;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.info {
+  margin-top: 0.5rem;
+}
