@@ -1,5 +1,4 @@
 import React from 'react'
-import './PlaylistSelector.css'
 
 export default function PlaylistSelector({ items, onSelect }) {
   return (

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import './TrackList.css'
 
 export default function TrackList({ item, onBack }) {
   const [tracks, setTracks] = useState([])
@@ -10,8 +9,8 @@ export default function TrackList({ item, onBack }) {
         ? `https://api.spotify.com/v1/playlists/${item.id}/tracks`
         : `https://api.spotify.com/v1/albums/${item.id}/tracks`
 
-    // Placeholder: replace with actual token-authenticated call
-    setTracks([])
+    // NOTE: In production you'd authenticate and fetch real data
+    setTracks([]) // placeholder
   }, [item])
 
   return (
@@ -21,7 +20,7 @@ export default function TrackList({ item, onBack }) {
       <ul>
         {tracks.map((track, index) => (
           <li key={index}>
-            <strong>{track.name}</strong> <br />
+            <strong>{track.name}</strong><br />
             <small>{track.artists?.map(a => a.name).join(', ')} • {msToMin(track.duration_ms)}</small>
           </li>
         ))}

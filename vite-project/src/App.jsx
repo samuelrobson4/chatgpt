@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PlaylistSelector from './components/PlaylistSelector'
 import TrackList from './components/TrackList'
-import './App.css'
+import './index.css'
 
 const SHEET_URL = 'https://sheet.best/api/sheets/3f4bb128-b8f4-4e68-9a9c-b1cfb1cfc7c1';
 
@@ -11,12 +11,12 @@ export default function App() {
 
   useEffect(() => {
     fetch(SHEET_URL)
-      .then((res) => res.json())
+      .then(res => res.json())
       .then(setItems)
   }, [])
 
   return (
-    <div className="app-container">
+    <div className="app">
       {!selected ? (
         <PlaylistSelector items={items} onSelect={setSelected} />
       ) : (
